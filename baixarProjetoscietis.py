@@ -10,7 +10,6 @@ from selenium.webdriver.chrome.options import Options
 
 
 # Configurações
-
 arquivo_excel = 'artigos_CIETIS.xlsx'
 download_dir = os.path.join(os.getcwd(), 'Downloads')
 pasta_destino = os.path.join(os.getcwd(), 'Projetos Ciets')
@@ -48,8 +47,6 @@ def limpar_nome(texto, limite=250):
 
 
 
-# ========== VERIFICAÇÕES ==========
-
 
 # Verificar se a planilha existe
 if not os.path.exists(arquivo_excel):
@@ -68,7 +65,6 @@ print(f"📄 Encontradas as seguintes abas: {planilhas}")
 
 
 # configurações do chrome
-
 chrome_options = Options()
 chrome_options.add_experimental_option('prefs', {
     'download.default_directory': download_dir,
@@ -96,7 +92,7 @@ def aguardar_download(pasta, timeout=30):
 
 
 
-# ========== Executando: ==========
+# Executando
 xls = pd.ExcelFile(arquivo_excel)
 planilhas = xls.sheet_names
 print(f"📄 Encontradas as seguintes planilhas: {planilhas}")
