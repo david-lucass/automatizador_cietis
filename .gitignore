@@ -1,0 +1,6 @@
+# Ignorar arquivos .py
+*.py
+
+# não ignorar esse:
+!baixarProjetoscietis.py
+
