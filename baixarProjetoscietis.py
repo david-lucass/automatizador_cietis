@@ -50,10 +50,10 @@ def limpar_nome(texto, limite=250):
 
 # Verificar se a planilha existe
 if not os.path.exists(arquivo_excel):
-    print(f"❌ Arquivo '{arquivo_excel}' não encontrado na pasta: {os.getcwd()}")
+    print(f"Arquivo '{arquivo_excel}' não encontrado na pasta: {os.getcwd()}")
     exit()
 else:
-    print(f"✅ Planilha encontrada: {arquivo_excel}")
+    print(f"Planilha encontrada: {arquivo_excel}")
 
 
 
@@ -95,7 +95,7 @@ def aguardar_download(pasta, timeout=30):
 # Executando
 xls = pd.ExcelFile(arquivo_excel)
 planilhas = xls.sheet_names
-print(f"📄 Encontradas as seguintes planilhas: {planilhas}")
+print(f"Encontradas as seguintes planilhas: {planilhas}")
 
 
 for nome_aba in planilhas:
@@ -113,11 +113,11 @@ for i, linha in df.iterrows():
     link = str(linha[5])                              # Coluna F
 
     if not link.startswith("http"):
-        print(f"[{i}] ⚠️ Link inválido: {link}")
+        print(f"[{i}] Link inválido: {link}")
         continue
         
 
-    print(f"\n🔍 Testando projeto da linha {i+1}")
+    print(f"\n Testando projeto da linha {i+1}")
     print(f"AUTOR : {autor}")
     print(f"TÍTULO: {titulo}")
     print(f"LINK  : {link}")
@@ -125,11 +125,11 @@ for i, linha in df.iterrows():
     driver.get(link)
     time.sleep(3)
 
-    print("⏳ Aguardando download...")
+    print(" Aguardando download...")
     try:
         arquivo_baixado = aguardar_download(download_dir, tempo_espera)
     except Exception as e:
-        print(f"❌ Erro ao baixar: {e}")
+        print(f"Erro ao baixar: {e}")
         continue
 
     nova_extensao = os.path.splitext(arquivo_baixado)[-1]
@@ -139,7 +139,7 @@ for i, linha in df.iterrows():
 
 
     if not subpasta_destino or subpasta_destino.lower() == 'nan':
-        print(f"[{i}] ⚠️ Caminho da subpasta vazio. Pulando...")
+        print(f"[{i}] Caminho da subpasta vazio. Pulando...")
         continue
 
 
@@ -149,7 +149,7 @@ for i, linha in df.iterrows():
     caminho_destino = os.path.join(subpasta_destino, novo_nome)
 
     shutil.move(arquivo_baixado, caminho_destino)
-    print(f"✅ Arquivo salvo como: {novo_nome}")
+    print(f"Arquivo salvo como: {novo_nome}")
 
     # break  # só a primeira linha
 
@@ -169,18 +169,18 @@ driver.quit()
 #     link = str(linha[4]) # Coluna E
 
 #     if not link.startswith("http"):
-#         print(f"[{i}] ⚠️ Link inválido: {link}")
+#         print(f"[{i}] Link inválido: {link}")
 #         continue
 
-#     print(f"\n🔗 Acessando: {link}")
+#     print(f"\nAcessando: {link}")
 #     driver.get(link)
 #     time.sleep(3)  # garantir que a página carregou
 
-#     print("⏳ Aguardando download...")
+#     print("Aguardando download...")
 #     try:
 #         arquivo_baixado = aguardar_download(download_dir, tempo_espera)
 #     except Exception as e:
-#         print(f"❌ Erro ao baixar: {e}")
+#         print(f" Erro ao baixar: {e}")
 #         continue
 
 #     # Novo nome + extensão
@@ -189,7 +189,7 @@ driver.quit()
 #     caminho_destino = os.path.join(pasta_destino, novo_nome)
 
 #     shutil.move(arquivo_baixado, caminho_destino)
-#     print(f"✅ Projeto salvo: {caminho_destino}")
+#     print(f" Projeto salvo: {caminho_destino}")
 
 #     time.sleep(3)  # esperar antes do próximo
 
